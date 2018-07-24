@@ -13,7 +13,6 @@ client.user.setPresence({
   }
     });
 });
-      })
 const Slam = [
   'هلا بيك',
   'cracking will sleeping :)',
