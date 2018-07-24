@@ -1,18 +1,9 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 console.log('ready');
-client.user.setPresence({
-  status: 'dnd',
- game: { 
-    type: 1,
-    name: 'a7a',
-     details: `client.on('message', message =>`,
-     url: 'https://www.twitch.tv/skwadraa',
-       
-
-  }
-    });
-});
+client.on('ready',  () => {
+      client.user.setGame("client.on('بلح')", "https://twitch.tv/mrmnaq")
+      })
 const Slam = [
   'هلا بيك',
   'cracking will sleeping :)',
