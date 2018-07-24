@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 client.on('ready',  () => {
-      client.user.setGame("Baron", "https://twitch.tv/mrmnaq")
+      client.user.setGame("Baron")
       })
 const Slam = [
   'هلا بيك',
