@@ -1,3 +1,5 @@
+const Discord = require('discord.js');
+const client = new Discord.Client();
 const bot = new Discord.Client();
 console.log('ready');
 bot.on('ready',  () => {
@@ -24,14 +26,11 @@ if (message.content === "pl7") {
       }, ms); 
     }
 });
-const Discord = require("discord.js");
 const ytdl = require("ytdl-core");
-const { Client, Util } = require('discord.js');
 const fs = require('fs');
 const getYoutubeID = require('get-youtube-id');
 const moment = require('moment');
 const db = require('quick.db');
-const client = new Discord.Client();   
 const giphy = require('giphy-api')();    
 const googl = require('goo.gl');  
 const translate = require('google-translate-api');   
