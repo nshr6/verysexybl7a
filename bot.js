@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const bot = new Discord.Client();
+const client2 = new Discord.Client();
 console.log('ready');
-bot.on('ready',  () => {
+client2.on('ready',  () => {
       bot.user.setGame("client.on('بلح')", "https://twitch.tv/mrmnaq")
       })
 const Slam = [
@@ -18,7 +18,7 @@ const Slam = [
   'تفجير لفيل'
 ]
 
-bot.on('message', message => {
+client2.on('message', message => {
 if (message.content === "pl7") {
   var ms = 60000;
       var interval = setInterval (function () {
@@ -307,6 +307,6 @@ ${prefix}queue ⇏ لمعرفة قآئمة التشغيل
    }
    }); 
 
-bot.login(process.env.BOT_TOKEN)
+client2.login(process.env.BOT_TOKEN)
 client.login(process.env.MUSIC_TOKEN)
 
