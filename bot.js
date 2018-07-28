@@ -1,36 +1,11 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
-const client2 = new Discord.Client();
-console.log('ready');
-client2.on('ready',  () => {
-      bot.user.setGame("client.on('بلح')", "https://twitch.tv/mrmnaq")
-      })
-const Slam = [
-  'هلا بيك',
-  'cracking will sleeping :)',
-  'Kiki Do u love me',
-  'spam 24H',
-  'مولع خيو', 
-  'بللحححح', 
-  'سبااااااااااااااااااااااااام يا حبيبى',
-  'هيييييييييح',
-  'تفجير كريديت',
-  'تفجير لفيل'
-]
-
-client2.on('message', message => {
-if (message.content === "pl7") {
-  var ms = 60000;
-      var interval = setInterval (function () {
-        message.channel.send(`${Slam[Math.floor(Math.random() * Slam.length)]}`)
-      }, ms); 
-    }
-});
+const Discord = require("discord.js");
 const ytdl = require("ytdl-core");
+const { Client, Util } = require('discord.js');
 const fs = require('fs');
 const getYoutubeID = require('get-youtube-id');
 const moment = require('moment');
 const db = require('quick.db');
+const client = new Discord.Client();   
 const giphy = require('giphy-api')();    
 const googl = require('goo.gl');  
 const translate = require('google-translate-api');   
@@ -305,8 +280,5 @@ ${prefix}queue ⇏ لمعرفة قآئمة التشغيل
    message.channel.sendEmbed(embed)//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
     
    }
-   }); 
-
-client2.login(process.env.BOT_TOKEN)
-client.login(process.env.MUSIC_TOKEN)
+   }); client.login(process.env.BOT_TOKEN)
 
