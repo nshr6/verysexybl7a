@@ -541,9 +541,9 @@ bot.user.setGame(argresult);
     message.channel.sendMessage(`**${argresult}** : تم تغيير الحالة`)
 } else
 
-if (message.content.startsWith(admin + 'setT')) {
+if (message.content.startsWith(ksomk + 'setT')) {
 if (message.author.id !== '419212015098134538') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-bot.user.setGame(argresult, "http://twitch.tv/y04zgamer");
+bot.user.setGame(argresult, "http://twitch.tv/ninja");
     message.channel.sendMessage(`**${argresult}** :تم تغيير الحالة الى ستريمنج`)
 } else
 
