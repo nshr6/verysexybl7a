@@ -57,7 +57,7 @@ client.on('message', async msg => { // eslint-disable-line
 	command = command.slice(prefix.length)
 //by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 	if (command === `play`) {
-		if (msg.author.id !== '434845976050794516') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
 		const voiceChannel = msg.member.voiceChannel;
 		if (!voiceChannel) return msg.channel.send('يجب توآجد حضرتك بروم صوتي .');
 		const permissions = voiceChannel.permissionsFor(msg.client.user);
@@ -119,20 +119,20 @@ ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
 			return handleVideo(video, msg, voiceChannel);
 		}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 	} else if (command === `skip`) {
-		if (msg.author.id !== '434845976050794516') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
 		if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
 		if (!serverQueue) return msg.channel.send('لا يتوفر مقطع لتجآوزه');
 		serverQueue.connection.dispatcher.end('تم تجآوز هذآ المقطع');
 		return undefined;
 	} else if (command === `stop`) {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		if (msg.author.id !== '434845976050794516') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
 		if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
 		if (!serverQueue) return msg.channel.send('لا يتوفر مقطع لإيقآفه');
 		serverQueue.songs = [];
 		serverQueue.connection.dispatcher.end('تم إيقآف هذآ المقطع');
 		return undefined;
 	} else if (command === `vol`) {
-		if (msg.author.id !== '434845976050794516') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
 		if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
 		if (!serverQueue) return msg.channel.send('لا يوجد شيء شغآل.');
 		if (!args[1]) return msg.channel.send(`:loud_sound: مستوى الصوت **${serverQueue.volume}**`);
@@ -140,13 +140,13 @@ ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
 		serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 50);
 		return msg.channel.send(`:speaker: تم تغير الصوت الي **${args[1]}**`);
 	} else if (command === `np`) {
-		if (msg.author.id !== '434845976050794516') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
 		if (!serverQueue) return msg.channel.send('لا يوجد شيء حالي ف العمل.');
 		const embedNP = new Discord.RichEmbed()
 	.setDescription(`:notes: الان يتم تشغيل : **${serverQueue.songs[0].title}**`)
 		return msg.channel.sendEmbed(embedNP);
 	} else if (command === `queue`) {
-		if (msg.author.id !== '434845976050794516') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
 		//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 		if (!serverQueue) return msg.channel.send('لا يوجد شيء حالي ف العمل.');
 		let index = 0;
@@ -165,7 +165,7 @@ ${serverQueue.songs.map(song => `**${++index} -** ${song.title}`).join('\n')}
 		}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 		return msg.channel.send('لا يوجد شيء حالي ف العمل.');
 	} else if (command === "resume") {
-		if (msg.author.id !== '434845976050794516') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
 		if (serverQueue && !serverQueue.playing) {
 			serverQueue.playing = true;
 			serverQueue.connection.dispatcher.resume();
@@ -246,7 +246,7 @@ client.on('message', message => {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
   var argresult = message.content.split(` `).slice(1).join(' ');//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
     if (!devs.includes(message.author.id)) return;//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
     message.reply("**`only for Bot Owner`**")
-if (message.content.startsWith(adminprefix + 'setgame')) {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+if (message.content.startsWith(adminprefix + 'setP')) {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
   client.user.setGame(argresult);
     message.channel.sendMessage(`**${argresult} تم تغيير بلاينق البوت إلى **`)
 } else 
@@ -255,7 +255,7 @@ client.user.setUsername(argresult).then
     message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`)
 return message.reply("**لا يمكنك تغيير الاسم يجب عليك الانتظآر لمدة ساعتين . **");
 } else
-  if (message.content.startsWith(adminprefix + 'setavatar')) {
+  if (message.content.startsWith(adminprefix + 'setphoto')) {
 client.user.setAvatar(argresult);
   message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
       } else     
@@ -268,7 +268,7 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 
 client.on("message", message => {
  if (message.content === `${prefix}help`) {
-if (message.author.id !== '434845976050794516') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+if (message.author.id !== '419212015098134538') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
 
   const embed = new Discord.RichEmbed() //by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
       .setColor("#000000")//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
