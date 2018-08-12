@@ -302,16 +302,20 @@ bot.on('ready', () => {
     console.log(`Logged in as ${bot.user.tag}!`);
 });
 //by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-bot.on('message', async msg => { // eslint-disable-line
+ient.on('message', async msg => { // eslint-disable-line
 	if (msg.author.bot) return undefined;
-	//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'	const args = msg.content.split(' ');
+	//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+	if (!msg.content.startsWith(prefix)) return undefined;
+	const args = msg.content.split(' ');
 	const searchString = args.slice(1).join(' ');
 	//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 	const url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
 	const serverQueue = queue.get(msg.guild.id);
 //by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+	let command = msg.content.toLowerCase().split(" ")[0];
+	command = command.slice(prefix.length)
 //by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	if (msg.content.startsWith('%play')) {
+	if (msg.content.startsWith('play')) {
 		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
 		const voiceChannel = msg.member.voiceChannel;
 		if (!voiceChannel) return msg.channel.send('يجب توآجد حضرتك بروم صوتي .');
