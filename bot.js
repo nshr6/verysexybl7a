@@ -502,8 +502,8 @@ function play(guild, song) {
 var ksomk = '%';
 bot.on('message', message => {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
   var argresult = message.content.split(` `).slice(1).join(' ');//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-    if (message.author.id !== '419212015098134538') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
 if (message.content.startsWith(ksomk + 'setP')) {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+    if (message.author.id !== '419212015098134538') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
   bot.user.setGame(argresult);
     message.channel.sendMessage(`**${argresult} تم تغيير بلاينق البوت إلى **`)
 } else 
