@@ -51,10 +51,9 @@ client.on('message', async msg => { // eslint-disable-line
 	const url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
 	const serverQueue = queue.get(msg.guild.id);
 //by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	let command = msg.content.toLowerCase().split(" ")[0];
-	command = command.slice(prefix.length)
+	
 //by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	if (command === `Aplay`) {
+	if (msg.content === `Aplay`) {
 		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
 		const voiceChannel = msg.member.voiceChannel;
 		if (!voiceChannel) return msg.channel.send('يجب توآجد حضرتك بروم صوتي .');
@@ -116,7 +115,7 @@ ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
 
 			return handleVideo(video, msg, voiceChannel);
 		}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	} else if (command === `Askip`) {
+	} else if ((msg.content === `Askip`) {
 		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
 		if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
 		if (!serverQueue) return msg.channel.send('لا يتوفر مقطع لتجآوزه');
