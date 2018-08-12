@@ -241,7 +241,7 @@ function play(guild, song) {
 	serverQueue.textChannel.send(`بدء تشغيل : **${song.title}**`);
 }//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 
-var admin = "A";//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+const admin = "A";//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 client.on('message', message => {
   if (!message.content.startsWith(admin)) return;
   var args = message.content.split(' ').slice(1);
@@ -536,7 +536,7 @@ if (message.author.id !== '419212015098134538') return message.reply('** هذا 
    }
    });
 const ksomk = '%';
-client.on('message', message => {
+bot.on('message', message => {
   if (!message.content.startsWith(ksomk)) return;
   var args = message.content.split(' ').slice(1);
   var argresult = args.join(' ');
@@ -545,33 +545,33 @@ client.on('message', message => {
 
 if (message.content.startsWith(ksomk + 'setP')) {
 if (message.author.id !== '434845976050794516') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-client.user.setGame(argresult);
+bot.user.setGame(argresult);
     message.channel.sendMessage(`**${argresult}** : تم تغيير الحالة`)
 } else
 
 if (message.content.startsWith(admin + 'setT')) {
 if (message.author.id !== '434845976050794516') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-client.user.setGame(argresult, "http://twitch.tv/y04zgamer");
+bot.user.setGame(argresult, "http://twitch.tv/y04zgamer");
     message.channel.sendMessage(`**${argresult}** :تم تغيير الحالة الى ستريمنج`)
 } else
 
 if (message.content.startsWith(ksomk + 'setname')) {
 if (message.author.id !== '434845976050794516') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-  client.user.setUsername(argresult).then
+  bot.user.setUsername(argresult).then
       message.channel.sendMessage(`**${argresult}** : تم تغير الأسم`)
   return message.reply("**لا تستطيع تغير الأسم الا بعد ساعتين**");
 } else
 
 if (message.content.startsWith(ksomk + 'setphoto')) {
 if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-client.user.setAvatar(argresult);
+bot.user.setAvatar(argresult);
     message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
 } else
 
 
 if (message.content.startsWith(ksomk + 'setW')) {
 if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-    client.user.setActivity(argresult, {type : 'watching'});
+    bot.user.setActivity(argresult, {type : 'watching'});
  message.channel.sendMessage(`**${argresult}** : تم تغيير الووتشينق الى`)
 }
 });
