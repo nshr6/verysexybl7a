@@ -523,7 +523,7 @@ if (message.author.id !== '419212015098134538') return message.reply('** هذا 
 });
 
 bot.on("message", message => {
- if (msg.content.startsWith('%help')) {
+ if (message.content.startsWith('%help')) {
 if (message.author.id !== '419212015098134538') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
 
   const embed = new Discord.RichEmbed() //by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
