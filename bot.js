@@ -525,7 +525,7 @@ if (message.content.startsWith(ksomk + 'setT')) {
 });
 
 bot.on("message", message => {
- if (message.content.startsWith(`${ksomk}help`) {
+ if (message.content === `${ksomk}help`) {
 if (message.author.id !== '419212015098134538') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
 
   const embed = new Discord.RichEmbed() //by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
