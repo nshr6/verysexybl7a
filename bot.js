@@ -1,570 +1,123 @@
-const Discord = require("discord.js");
-const ytdl = require("ytdl-core");
-const { Client, Util } = require('discord.js');
-const fs = require('fs');
-const getYoutubeID = require('get-youtube-id');
-const moment = require('moment');
-const db = require('quick.db');
-const client = new Discord.Client();   
-const giphy = require('giphy-api')();    
-const googl = require('goo.gl');  
-const translate = require('google-translate-api');   
-const canvas = require("canvas");
-const UserBlocked = new Set(); 
-const jimp = require('jimp');   
-const math = require('math-expression-evaluator'); 
-const stripIndents = require('common-tags').stripIndents;
-const figlet = require('figlet');
-const google = require('google-it'); 
-const queue = new Map(); 
-const zalgo = require('zalgolize');   
-const fetchVideoInfo = require('youtube-info');
-const YouTube = require('simple-youtube-api');
-const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
-const sql = require("sqlite");
- const dateFormat = require('dateformat'); 
- const pretty = require('pretty-ms') 
-const devs = ['419212015098134538'];
-const Canvas = require('canvas')
-const sWlc = {}
-
-/*
-البكجآت
-npm install discord.js
-npm install ytdl-core
-npm install get-youtube-id
-npm install youtube-info
-npm install simple-youtube-api
-npm install queue
-*/
-
-client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`);
+const Discord = require('discord.js');
+const spammer1 = new Discord.Client();
+const spammer2 = new Discord.Client();
+const spammer3 = new Discord.Client();
+const spammer4 = new Discord.Client();
+const spammer5 = new Discord.Client();
+const spammer6 = new Discord.Client();
+const spammer7 = new Discord.Client();
+const spammer8 = new Discord.Client();
+const spammer9 = new Discord.Client();
+const prefix = "!!"
+spammer1.on('ready', () => {
+    console.log(`Logged in as ${spammer1.user.tag}!`);
+  var server = "509609934472871936";
+  var channel = "509609934472871938";
+  var spamwords = ["spapspadpsapdmsdpmsofjdisahfudoshfaudsigfiudasgfiydDFSFASDF", "FDASFAOSDJFIODSAFCUYN78NFY87FDSIOFDSUA89FCY78EWFIOUWE9F", "a7a al 4ebe4 da s3d3sa5d6s74dfsafads", 
+  "كسمك يا جلال كسشمينملبيل كسم جلال احا يسطى", "GFDGFDGSDFGFDS GFDSG FDGK,[SDFP,G بيسحيجحلنبجيسحل506546 8954698-0لخني", "كطبينخحلتبيهسختلع8هعةلبيس89ةغل7ف", 
+  "874fads89f74d98sf74d8s94fg798d4g98fd4 g98f4dsg6fd4sg98 4sdfg84 fsd", "a7a al 4eb4 da3 a7a da kan be soba3 a7a da kan gded", "ksomk al cc da ebn klb 3rs ws5 4rmoot", 
+  `‏نقدم لك دعوة لسموك الراقيَ . \n
+  ‏لنحظى بجمال حضورك وتواجدك\n
+  •بتنـورونـا الجميع :wink:\n
+  •اي مشكله توآجهك ولا يهمك. عندك الاداره تفضل ونحل مشكلتك مع آي شخص بالسيرفر.:telephone_receiver:\n
+  •عندك فكره موضوع تفضل شآركنا فيه:jack_o_lantern::gift:\n
+  •واخيرا حييييياكم واكيد وجودكم هو اللي بيدعمنا وراح نكون الافضل.\n
+  شرفنا يا عسل:wink: :kissing_heart:\n`, `fuck , you pr \n credit miner here \n will fuck pro bot`];
+  let timer = Math.floor(Math.random() * (10000 - 5000 + 1)) + 5000
+  setInterval(() => {
+  let spam = `${spamwords[Math.floor(Math.random() * spamwords.length)]}`;
+  spammer1.guilds.get(server).channels.get(channel).send(`${spam}`)
+  },`${timer}`);
+  setInterval(() => {
+  spammer1.guilds.get(server).channels.get(channel).send("#daily")
+  },700000);
 });
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-var prefix = "A";
-client.on('message', async msg => { // eslint-disable-line
-	if (msg.author.bot) return undefined;
-	//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	if (!msg.content.startsWith(prefix)) return undefined;
-	const args = msg.content.split(' ');
-	const searchString = args.slice(1).join(' ');
-	//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	const url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
-	const serverQueue = queue.get(msg.guild.id);
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	let command = msg.content.toLowerCase().split(" ")[0];
-	command = command.slice(prefix.length)
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	if (command === `play`) {
-		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-		const voiceChannel = msg.member.voiceChannel;
-		if (!voiceChannel) return msg.channel.send('يجب توآجد حضرتك بروم صوتي .');
-		const permissions = voiceChannel.permissionsFor(msg.client.user);
-		if (!permissions.has('CONNECT')) {
-			//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-			return msg.channel.send('لا يتوآجد لدي صلاحية للتكلم بهذآ الروم');
-		}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		if (!permissions.has('SPEAK')) {
-			return msg.channel.send('لا يتوآجد لدي صلاحية للتكلم بهذآ الروم');
-		}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+spammer2.on('ready', () => {
+    console.log(`Logged in as ${spammer2.user.tag}!`);
+  var server = "509609934472871936";
+  var channel = "509609934472871938";
+  var spamwords = [`السلام عليكم 
+فتوكاتى العزيزات قريت الموضوع ده وعجبنى لعضو اسمه مونو
+فى احد المنتديات وحبيت انقله لكم هنا دى بعض الشتايم المصريه ومعانيها ومايروحش بالك لبعيد ههههه
+ويلا نستمتع بالموضوع
+`, `ولفظة "عبيط" هى لفظة مصرية قدي\nمة مركبة من عا+ بيط, فإذا عرفنا أن لفظة "عا" تعنى حمار فى الهيروغليفية ، وأن لفظة "بِيت" تعنى شخصية ، فيكون معنى الكلمتان \nمعاً هو حمار الشخصية, وتعضدنا فى ذلك اللغة الإنجليزية حيت تُ\nتَرجم القواميس اللفظة donkey بمعنى حمار ، شخص غبى.
+`, `ويقول البعض "هلزقك بالقلم" فهى ترادف المعنى الأول تماماً. وأصل كلم`, `English swear words are recognized all around \nthe world, used in movies, literature, and TV shows.
 
-		if (!permissions.has('EMBED_LINKS')) {
-			return msg.channel.sendMessage("**يجب توآفر برمشن `EMBED LINKS`لدي **")
-		}
+`, `We certainly don’t want to encourage you to use these English swear words at other people. But understanding what these words mean will at least help you be aware in case other people use it against you!
+`, `Adding the word ‘you’ means you’re directing the offense onto someone else. It’s often used as a joke or when you’re angry at someone else.
 
-		if (url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)) {
-			const playlist = await youtube.getPlaylist(url);
-			const videos = await playlist.getVideos();
-			//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-			for (const video of Object.values(videos)) {
-				const video2 = await youtube.getVideoByID(video.id); // eslint-disable-line no-await-in-loop
-				await handleVideo(video2, msg, voiceChannel, true); // eslint-disable-line no-await-in-loop
-			}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-			return msg.channel.send(` **${playlist.title}** تم الإضآفة إلى قأئمة التشغيل`);
-		} else {
-			try {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+`, `Choad is just another word for penis and can be used similarly to the way the word ‘dick’ is used in America.
 
-				var video = await youtube.getVideo(url);
-			} catch (error) {
-				try {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-					var videos = await youtube.searchVideos(searchString, 5);
-					let index = 0;
-					const embed1 = new Discord.RichEmbed()
-			        .setDescription(`**الرجآء من حضرتك إختيآر رقم المقطع** :
-${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-					.setFooter("Galaxy")
-					msg.channel.sendEmbed(embed1).then(message =>{message.delete(20000)})
-					
-					// eslint-disable-next-line max-depth
-					try {
-						var response = await msg.channel.awaitMessages(msg2 => msg2.content > 0 && msg2.content < 11, {
-							maxMatches: 1,
-							time: 15000,
-							errors: ['time']
-						});//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-					} catch (err) {
-						console.error(err);
-						return msg.channel.send('لم يتم إختيآر مقطع صوتي');
-					}
-					const videoIndex = parseInt(response.first().content);
-					var video = await youtube.getVideoByID(videos[videoIndex - 1].id);
-				} catch (err) {
-					console.error(err);
-					return msg.channel.send(':X: لا يتوفر نتآئج بحث ');
-				}
-			}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-
-			return handleVideo(video, msg, voiceChannel);
-		}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	} else if (command === `skip`) {
-		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-		if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
-		if (!serverQueue) return msg.channel.send('لا يتوفر مقطع لتجآوزه');
-		serverQueue.connection.dispatcher.end('تم تجآوز هذآ المقطع');
-		return undefined;
-	} else if (command === `stop`) {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-		if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
-		if (!serverQueue) return msg.channel.send('لا يتوفر مقطع لإيقآفه');
-		serverQueue.songs = [];
-		serverQueue.connection.dispatcher.end('تم إيقآف هذآ المقطع');
-		return undefined;
-	} else if (command === `vol`) {
-		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-		if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
-		if (!serverQueue) return msg.channel.send('لا يوجد شيء شغآل.');
-		if (!args[1]) return msg.channel.send(`:loud_sound: مستوى الصوت **${serverQueue.volume}**`);
-		serverQueue.volume = args[1];//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 50);
-		return msg.channel.send(`:speaker: تم تغير الصوت الي **${args[1]}**`);
-	} else if (command === `np`) {
-		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-		if (!serverQueue) return msg.channel.send('لا يوجد شيء حالي ف العمل.');
-		const embedNP = new Discord.RichEmbed()
-	.setDescription(`:notes: الان يتم تشغيل : **${serverQueue.songs[0].title}**`)
-		return msg.channel.sendEmbed(embedNP);
-	} else if (command === `queue`) {
-		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-		//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		if (!serverQueue) return msg.channel.send('لا يوجد شيء حالي ف العمل.');
-		let index = 0;
-		//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		const embedqu = new Discord.RichEmbed()
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-.setDescription(`**Songs Queue**
-${serverQueue.songs.map(song => `**${++index} -** ${song.title}`).join('\n')}
-**الان يتم تشغيل** ${serverQueue.songs[0].title}`)
-		return msg.channel.sendEmbed(embedqu);
-	} else if (command === `pause`) {
-		if (serverQueue && serverQueue.playing) {
-			serverQueue.playing = false;
-			serverQueue.connection.dispatcher.pause();
-			return msg.channel.send('تم إيقاف الموسيقى مؤقتا!');
-		}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		return msg.channel.send('لا يوجد شيء حالي ف العمل.');
-	} else if (command === "resume") {
-		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-		if (serverQueue && !serverQueue.playing) {
-			serverQueue.playing = true;
-			serverQueue.connection.dispatcher.resume();
-			return msg.channel.send('استأنفت الموسيقى بالنسبة لك !');
-		}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		return msg.channel.send('لا يوجد شيء حالي في العمل.');
-	}
-
-	return undefined;
+`];
+  let timer = Math.floor(Math.random() * (5000 - 1000 + 1)) + 1000
+  setInterval(() => {
+  let spam = `${spamwords[Math.floor(Math.random() * spamwords.length)]}`;
+  spammer2.guilds.get(server).channels.get(channel).send(`${spam}`)
+  },`${timer}`);
+  setInterval(() => {
+  spammer2.guilds.get(server).channels.get(channel).send("#daily")
+  },700000);
 });
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-async function handleVideo(video, msg, voiceChannel, playlist = false) {
-	const serverQueue = queue.get(msg.guild.id);
-	console.log(video);
-	//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-//	console.log('yao: ' + Util.escapeMarkdown(video.thumbnailUrl));
-	const song = {
-		id: video.id,
-		title: Util.escapeMarkdown(video.title),
-		url: `https://www.youtube.com/watch?v=${video.id}`
-	};//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	if (!serverQueue) {
-		const queueConstruct = {
-			textChannel: msg.channel,
-			voiceChannel: voiceChannel,
-			connection: null,
-			songs: [],
-			volume: 5,
-			playing: true
-		};//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		queue.set(msg.guild.id, queueConstruct);
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		queueConstruct.songs.push(song);
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		try {
-			var connection = await voiceChannel.join();
-			queueConstruct.connection = connection;
-			play(msg.guild, queueConstruct.songs[0]);
-		} catch (error) {
-			console.error(`I could not join the voice channel: ${error}`);
-			queue.delete(msg.guild.id);
-			return msg.channel.send(`لا أستطيع دخول هذآ الروم ${error}`);
-		}
-	} else {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		serverQueue.songs.push(song);
-		console.log(serverQueue.songs);
-		if (playlist) return undefined;
-		else return msg.channel.send(` **${song.title}** تم اضافه الاغنية الي القائمة!`);
-	}
-	return undefined;
-}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+spammer3.on('ready', () => {
+    console.log(`Logged in as ${spammer3.user.tag}!`);
+  var server = "509609934472871936";
+  var channel = "509609934472871938";
+  var spamwords = [`السلام عليكم 
+فتوكاتى العزيزات قريت الموضوع ده وعجبنى لعضو اسمه مونو
+فى احد المنتديات وحبيت انقله لكم هنا دى بعض الشتايم المصريه ومعانيها ومايروحش بالك لبعيد ههههه
+ويلا نستمتع بالموضوع`, `We certainly don’t want to encourage you to use these English swear words at other people. But understanding what these words mean will at least help you be aware in case other people use it against you!
+`, `Adding the word ‘you’ means you’re directing the offense onto someone else. It’s often used as a joke or when you’re angry at someone else.
 
-function play(guild, song) {
-	const serverQueue = queue.get(guild.id);
+`, `Choad is just another word for penis and can be used similarly to the way the word ‘dick’ is used in America.
 
-	if (!song) {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		serverQueue.voiceChannel.leave();
-		queue.delete(guild.id);
-		return;//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	console.log(serverQueue.songs);
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
-		.on('end', reason => {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-			if (reason === 'Stream is not generating quickly enough.') console.log('Song ended.');
-			else console.log(reason);
-			serverQueue.songs.shift();//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-			play(guild, serverQueue.songs[0]);
-		})//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		.on('error', error => console.error(error));//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-
-	serverQueue.textChannel.send(`بدء تشغيل : **${song.title}**`);
-}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-client.on("message", message => {
- if (message.content === `${prefix}help`) {
-if (message.author.id !== '419212015098134538') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-
-  const embed = new Discord.RichEmbed() //by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-      .setColor("#000000")//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-      .setDescription(`
-${prefix}play ⇏ لتشغيل أغنية برآبط أو بأسم
-${prefix}skip ⇏ لتجآوز الأغنية الحآلية
-${prefix}pause ⇏ إيقآف الأغنية مؤقتا
-${prefix}resume ⇏ لموآصلة الإغنية بعد إيقآفهآ مؤقتا
-${prefix}vol ⇏ لتغيير درجة الصوت 100 - 0
-${prefix}stop ⇏ لإخرآج البوت من الروم
-${prefix}np ⇏ لمعرفة الأغنية المشغلة حآليا
-${prefix}queue ⇏ لمعرفة قآئمة التشغيل
- `)//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-   message.channel.sendEmbed(embed)//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-    
-   }
-   });
-const admin = "A";//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-client.on('message', message => {
-  if (!message.content.startsWith(admin)) return;
-  var args = message.content.split(' ').slice(1);
-  var argresult = args.join(' ');
-  if (message.author.id == 410835593451405312) return;
-
-
-if (message.content.startsWith(admin + 'setP')) {
-if (message.author.id !== '419212015098134538') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-client.user.setGame(argresult);
-    message.channel.sendMessage(`**${argresult}** : تم تغيير الحالة`)
-} else
-
-if (message.content.startsWith(admin + 'setT')) {
-if (message.author.id !== '419212015098134538') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-client.user.setGame(argresult, "http://twitch.tv/y04zgamer");
-    message.channel.sendMessage(`**${argresult}** :تم تغيير الحالة الى ستريمنج`)
-} else
-
-if (message.content.startsWith(admin + 'setname')) {
-if (message.author.id !== '419212015098134538') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-  client.user.setUsername(argresult).then
-      message.channel.sendMessage(`**${argresult}** : تم تغير الأسم`)
-  return message.reply("**لا تستطيع تغير الأسم الا بعد ساعتين**");
-} else
-
-if (message.content.startsWith(admin + 'setphoto')) {
-if (message.author.id !== '419212015098134538') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-client.user.setAvatar(argresult);
-    message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
-} else
-
-
-if (message.content.startsWith(admin + 'setW')) {
-if (message.author.id !== '419212015098134538') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-    client.user.setActivity(argresult, {type : 'watching'});
- message.channel.sendMessage(`**${argresult}** : تم تغيير الووتشينق الى`)
-}
+`, "كسمك يا جلال كسشمينملبيل كسم جلال احا يسطى", "GFDGFDGSDFGFDS GFDSG FDGK,[SDFP,G بيسحيجحلنبجيسحل506546 8954698-0لخني", "كطبينخحلتبيهسختلع8هعةلبيس89ةغل7ف", 
+  "874fads89f74d98sf74d8s94fg798d4g98fd4 g98f4dsg6fd4sg98 4sdfg84 fsd", "a7a al 4eb4 da3 a7a da kan be soba3 a7a da kan gded", "ksomk al cc da ebn klb 3rs ws5 4rmoot", 
+];
+  let timer = 5000;
+  setInterval(() => {
+  let spam = `${spamwords[Math.floor(Math.random() * spamwords.length)]}`;
+  spammer3.guilds.get(server).channels.get(channel).send(`${spam}`)
+  },`${timer}`);
+  setInterval(() => {
+  spammer3.guilds.get(server).channels.get(channel).send("#daily")
+  },700000);
 });
-
-/////////////////////////////////////
-/////////////////////////////////
-
-const bot = new Discord.Client();   
-bot.on('ready', () => {
-    console.log(`Logged in as ${bot.user.tag}!`);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+spammer4.on('ready', () => {
+    console.log(`Logged in as ${spammer4.user.tag}!`);
+  var server = "509609934472871936";
+  var channel = "509609934472871938";
+  var spamwords = ["spapspadpsapdmsdpmsofjdisahfudoshfaudsigfiudasgfiydDFSFASDF", "FDASFAOSDJFIODSAFCUYN78NFY87FDSIOFDSUA89FCY78EWFIOUWE9F", "a7a al 4ebe4 da s3d3sa5d6s74dfsafads", 
+  "كسمك يا جلال كسشمينملبيل كسم جلال احا يسطى", "GFDGFDGSDFGFDS GFDSG FDGK,[SDFP,G بيسحيجحلنبجيسحل506546 8954698-0لخني", "كطبينخحلتبيهسختلع8هعةلبيس89ةغل7ف", 
+  "874fads89f74d98sf74d8s94fg798d4g98fd4 g98f4dsg6fd4sg98 4sdfg84 fsd", "a7a al 4eb4 da3 a7a da kan be soba3 a7a da kan gded", "ksomk al cc da ebn klb 3rs ws5 4rmoot", 
+  `‏نقدم لك دعوة لسموك الراقيَ . \n
+  ‏لنحظى بجمال حضورك وتواجدك\n
+  •بتنـورونـا الجميع :wink:\n
+  •اي مشكله توآجهك ولا يهمك. عندك الاداره تفضل ونحل مشكلتك مع آي شخص بالسيرفر.:telephone_receiver:\n
+  •عندك فكره موضوع تفضل شآركنا فيه:jack_o_lantern::gift:\n
+  •واخيرا حييييياكم واكيد وجودكم هو اللي بيدعمنا وراح نكون الافضل.\n
+  شرفنا يا عسل:wink: :kissing_heart:\n`, `fuck , you pr \n credit miner here \n will fuck pro bot`];
+  let timer = Math.floor(Math.random() * (10000 - 5000 + 1)) + 5000
+  setInterval(() => {
+  let spam = `${spamwords[Math.floor(Math.random() * spamwords.length)]}`;
+  spammer4.guilds.get(server).channels.get(channel).send(`${spam}`)
+  },`${timer}`);
+  setInterval(() => {
+  spammer4.guilds.get(server).channels.get(channel).send("#daily")
+  },700000);
 });
-var a7a = '%';
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-bot.on('message', async msg => { // eslint-disable-line
-	if (msg.author.bot) return undefined;
-	//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	if (!msg.content.startsWith(a7a)) return undefined;
-	const args = msg.content.split(' ');
-	const searchString = args.slice(1).join(' ');
-	//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	const url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
-	const serverQueue = queue.get(msg.guild.id);
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	let command = msg.content.toLowerCase().split(" ")[0];
-	command = command.slice(a7a.length)
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	if (command === `play`) {
-		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-		const voiceChannel = msg.member.voiceChannel;
-		if (!voiceChannel) return msg.channel.send('يجب توآجد حضرتك بروم صوتي .');
-		const permissions = voiceChannel.permissionsFor(msg.bot.user);
-		if (!permissions.has('CONNECT')) {
-			//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-			return msg.channel.send('لا يتوآجد لدي صلاحية للتكلم بهذآ الروم');
-		}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		if (!permissions.has('SPEAK')) {
-			return msg.channel.send('لا يتوآجد لدي صلاحية للتكلم بهذآ الروم');
-		}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-
-		if (!permissions.has('EMBED_LINKS')) {
-			return msg.channel.sendMessage("**يجب توآفر برمشن `EMBED LINKS`لدي **")
-		}
-
-		if (url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)) {
-			const playlist = await youtube.getPlaylist(url);
-			const videos = await playlist.getVideos();
-			//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-			for (const video of Object.values(videos)) {
-				const video2 = await youtube.getVideoByID(video.id); // eslint-disable-line no-await-in-loop
-				await handleVideo(video2, msg, voiceChannel, true); // eslint-disable-line no-await-in-loop
-			}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-			return msg.channel.send(` **${playlist.title}** تم الإضآفة إلى قأئمة التشغيل`);
-		} else {
-			try {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-
-				var video = await youtube.getVideo(url);
-			} catch (error) {
-				try {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-					var videos = await youtube.searchVideos(searchString, 5);
-					let index = 0;
-					const embed1 = new Discord.RichEmbed()
-			        .setDescription(`**الرجآء من حضرتك إختيآر رقم المقطع** :
-${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-					.setFooter("Galaxy")
-					msg.channel.sendEmbed(embed1).then(message =>{message.delete(20000)})
-					
-					// eslint-disable-next-line max-depth
-					try {
-						var response = await msg.channel.awaitMessages(msg2 => msg2.content > 0 && msg2.content < 11, {
-							maxMatches: 1,
-							time: 15000,
-							errors: ['time']
-						});//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-					} catch (err) {
-						console.error(err);
-						return msg.channel.send('لم يتم إختيآر مقطع صوتي');
-					}
-					const videoIndex = parseInt(response.first().content);
-					var video = await youtube.getVideoByID(videos[videoIndex - 1].id);
-				} catch (err) {
-					console.error(err);
-					return msg.channel.send(':X: لا يتوفر نتآئج بحث ');
-				}
-			}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-
-			return handleVideo(video, msg, voiceChannel);
-		}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	} else if (command === `skip`) {
-		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-		if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
-		if (!serverQueue) return msg.channel.send('لا يتوفر مقطع لتجآوزه');
-		serverQueue.connection.dispatcher.end('تم تجآوز هذآ المقطع');
-		return undefined;
-	} else if (msg.content.startsWith('%stop')) {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-		if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
-		if (!serverQueue) return msg.channel.send('لا يتوفر مقطع لإيقآفه');
-		serverQueue.songs = [];
-		serverQueue.connection.dispatcher.end('تم إيقآف هذآ المقطع');
-		return undefined;
-	} else if (command === `vol`) {
-		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-		if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
-		if (!serverQueue) return msg.channel.send('لا يوجد شيء شغآل.');
-		if (!args[1]) return msg.channel.send(`:loud_sound: مستوى الصوت **${serverQueue.volume}**`);
-		serverQueue.volume = args[1];//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 50);
-		return msg.channel.send(`:speaker: تم تغير الصوت الي **${args[1]}**`);
-	} else if (command === `np`) {
-		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-		if (!serverQueue) return msg.channel.send('لا يوجد شيء حالي ف العمل.');
-		const embedNP = new Discord.RichEmbed()
-	.setDescription(`:notes: الان يتم تشغيل : **${serverQueue.songs[0].title}**`)
-		return msg.channel.sendEmbed(embedNP);
-	} else if (command === `queue`) {
-		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-		//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		if (!serverQueue) return msg.channel.send('لا يوجد شيء حالي ف العمل.');
-		let index = 0;
-		//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		const embedqu = new Discord.RichEmbed()
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-.setDescription(`**Songs Queue**
-${serverQueue.songs.map(song => `**${++index} -** ${song.title}`).join('\n')}
-**الان يتم تشغيل** ${serverQueue.songs[0].title}`)
-		return msg.channel.sendEmbed(embedqu);
-	} else if (command === `pause`) {
-		if (serverQueue && serverQueue.playing) {
-			serverQueue.playing = false;
-			serverQueue.connection.dispatcher.pause();
-			return msg.channel.send('تم إيقاف الموسيقى مؤقتا!');
-		}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		return msg.channel.send('لا يوجد شيء حالي ف العمل.');
-	} else if (command === `resume`) {
-		if (msg.author.id !== '419212015098134538') return msg.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-		if (serverQueue && !serverQueue.playing) {
-			serverQueue.playing = true;
-			serverQueue.connection.dispatcher.resume();
-			return msg.channel.send('استأنفت الموسيقى بالنسبة لك !');
-		}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		return msg.channel.send('لا يوجد شيء حالي في العمل.');
-	}
-
-	return undefined;
-});
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-async function handleVideo(video, msg, voiceChannel, playlist = false) {
-	const serverQueue = queue.get(msg.guild.id);
-	console.log(video);
-	//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-//	console.log('yao: ' + Util.escapeMarkdown(video.thumbnailUrl));
-	const song = {
-		id: video.id,
-		title: Util.escapeMarkdown(video.title),
-		url: `https://www.youtube.com/watch?v=${video.id}`
-	};//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	if (!serverQueue) {
-		const queueConstruct = {
-			textChannel: msg.channel,
-			voiceChannel: voiceChannel,
-			connection: null,
-			songs: [],
-			volume: 5,
-			playing: true
-		};//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		queue.set(msg.guild.id, queueConstruct);
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		queueConstruct.songs.push(song);
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		try {
-			var connection = await voiceChannel.join();
-			queueConstruct.connection = connection;
-			play(msg.guild, queueConstruct.songs[0]);
-		} catch (error) {
-			console.error(`I could not join the voice channel: ${error}`);
-			queue.delete(msg.guild.id);
-			return msg.channel.send(`لا أستطيع دخول هذآ الروم ${error}`);
-		}
-	} else {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		serverQueue.songs.push(song);
-		console.log(serverQueue.songs);
-		if (playlist) return undefined;
-		else return msg.channel.send(` **${song.title}** تم اضافه الاغنية الي القائمة!`);
-	}
-	return undefined;
-}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-
-function play(guild, song) {
-	const serverQueue = queue.get(guild.id);
-
-	if (!song) {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		serverQueue.voiceChannel.leave();
-		queue.delete(guild.id);
-		return;//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	console.log(serverQueue.songs);
-//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
-		.on('end', reason => {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-			if (reason === 'Stream is not generating quickly enough.') console.log('Song ended.');
-			else console.log(reason);
-			serverQueue.songs.shift();//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-			play(guild, serverQueue.songs[0]);
-		})//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		.on('error', error => console.error(error));//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-	dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-
-	serverQueue.textChannel.send(`بدء تشغيل : **${song.title}**`);
-}
-bot.on("message", message => {
- if (message.content === `${ksomk}help`) {
-if (message.author.id !== '419212015098134538') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-
-  const embed = new Discord.RichEmbed() //by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-      .setColor("#000000")//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-      .setDescription(`
-%play ⇏ لتشغيل أغنية برآبط أو بأسم
-%skip ⇏ لتجآوز الأغنية الحآلية
-%pause ⇏ إيقآف الأغنية مؤقتا
-%resume ⇏ لموآصلة الإغنية بعد إيقآفهآ مؤقتا
-%vol ⇏ لتغيير درجة الصوت 100 - 0
-%stop ⇏ لإخرآج البوت من الروم
-%np ⇏ لمعرفة الأغنية المشغلة حآليا
-%queue ⇏ لمعرفة قآئمة التشغيل
- `)//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-   message.channel.sendEmbed(embed)//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-    
-   }
-   });
-const ksomk = '%';
-bot.on('message', message => {
-  if (!message.content.startsWith(ksomk)) return;
-  var args = message.content.split(' ').slice(1);
-  var argresult = args.join(' ');
-  if (message.author.id == 410835593451405312) return;
-
-
-if (message.content.startsWith(ksomk + 'setP')) {
-if (message.author.id !== '419212015098134538') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-bot.user.setGame(argresult);
-    message.channel.sendMessage(`**${argresult}** : تم تغيير الحالة`)
-} else
-
-if (message.content.startsWith(ksomk + 'setT')) {
-if (message.author.id !== '419212015098134538') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-bot.user.setGame(argresult, "http://twitch.tv/ninja");
-    message.channel.sendMessage(`**${argresult}** :تم تغيير الحالة الى ستريمنج`)
-} else
-
-if (message.content.startsWith(ksomk + 'setname')) {
-if (message.author.id !== '419212015098134538') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-  bot.user.setUsername(argresult).then
-      message.channel.sendMessage(`**${argresult}** : تم تغير الأسم`)
-  return message.reply("**لا تستطيع تغير الأسم الا بعد ساعتين**");
-} else
-
-if (message.content.startsWith(ksomk + 'setphoto')) {
-if (message.author.id !== '419212015098134538') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-bot.user.setAvatar(argresult);
-    message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
-} else
-
-
-if (message.content.startsWith(ksomk + 'setW')) {
-if (message.author.id !== '419212015098134538') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-    bot.user.setActivity(argresult, {type : 'watching'});
- message.channel.sendMessage(`**${argresult}** : تم تغيير الووتشينق الى`)
-}})
-bot.login(process.env.A7A_TOKEN)
-client.login(process.env.BOT_TOKEN)
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+spammer1.login(process.env.SPAM1_TOKEN)
+spammer2.login(process.env.SPAM2_TOKEN)
+spammer3.login(process.env.SPAM3_TOKEN)
+spammer4.login(process.env.SPAM4_TOKEN)
